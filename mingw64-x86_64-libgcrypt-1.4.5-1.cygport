@@ -1,9 +1,0 @@
-CROSS_HOST="x86_64-w64-mingw32"
-ORIG_PN="libgcrypt"
-inherit cross
-
-DESCRIPTION="libgcrypt for MinGW-w64 Win64 toolchain"
-HOMEPAGE="http://www.gnupg.org/related_software/libraries.en.html"
-SRC_URI="ftp://ftp.gnupg.org/gcrypt/${ORIG_PN}/${ORIG_PN}-${PV}.tar.bz2"
-
-CYGCONF_ARGS="ac_cv_sys_symbol_underscore=no"
