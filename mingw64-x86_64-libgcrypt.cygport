@@ -4,7 +4,7 @@ inherit cross
 
 NAME="mingw64-x86_64-libgcrypt"
 VERSION=1.5.0
-RELEASE=1
+RELEASE=2
 CATEGORY="Devel"
 SUMMARY="libgcrypt for MinGW-w64 Win64 toolchain"
 DESCRIPTION="This package does NOT contain cygwin binaries.  Instead, it
@@ -13,7 +13,10 @@ mingw64-x86_64-gcc cross compiler, and installs into the
 /usr/x86_64-w64-mingw32/sys-root/mingw/{lib,include} directories."
 HOMEPAGE="http://www.gnupg.org/related_software/libraries.en.html"
 SRC_URI="ftp://ftp.gnupg.org/gcrypt/${ORIG_PN}/${ORIG_PN}-${PV}.tar.bz2"
-PATCH_URI="01-def-syntax.patch"
+PATCH_URI="
+	http://pkgs.fedoraproject.org/cgit/mingw-libgcrypt.git/plain/libgcrypt-use-correct-asm-code-for-win64.patch?id=5d42fe8
+	01-def-syntax.patch
+"
 
 DIFF_EXCLUDES="gcrypt.h"
 
