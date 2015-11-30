@@ -2,7 +2,7 @@ CROSS_HOST="x86_64-w64-mingw32"
 inherit cross
 
 NAME="mingw64-x86_64-libgcrypt"
-VERSION=1.6.3
+VERSION=1.6.4
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="libgcrypt for Win64 toolchain"
@@ -12,7 +12,7 @@ mingw64-x86_64-gcc cross compiler, and installs into the
 /usr/x86_64-w64-mingw32/sys-root/mingw/{lib,include} directories."
 HOMEPAGE="http://www.gnupg.org/related_software/libraries.en.html"
 #SRC_URI="ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-${VERSION}.tar.bz2"
-md5sum=cbb7aa4b8c4c63f24e954fbf00e16335
+md5sum=912ad2604bfb6a759e1d93ed26c5e999
 SRC_URI="
 	http://pkgs.fedoraproject.org/repo/pkgs/libgcrypt/libgcrypt-${VERSION}-hobbled.tar.xz/${md5sum}/libgcrypt-${VERSION}-hobbled.tar.xz
 	http://pkgs.fedoraproject.org/cgit/libgcrypt.git/plain/ecc-curves.c
@@ -21,7 +21,6 @@ SRC_URI="
 "
 SRC_DIR="libgcrypt-${VERSION}"
 PATCH_URI="
-	http://pkgs.fedoraproject.org/cgit/mingw-libgcrypt.git/plain/libgcrypt-mingw64-use-correct-datatype-for-GetProcessWorkingSet.patch
 	http://pkgs.fedoraproject.org/cgit/mingw-libgcrypt.git/plain/libgcrypt-use-correct-def-file.patch
 	http://pkgs.fedoraproject.org/cgit/mingw-libgcrypt.git/plain/libgcrypt-use-correct-asm-code-for-win64.patch
 
