@@ -2,7 +2,7 @@ CROSS_HOST="x86_64-w64-mingw32"
 inherit cross
 
 NAME="mingw64-x86_64-libgcrypt"
-VERSION=1.6.6
+VERSION=1.7.6
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="libgcrypt for Win64 toolchain"
@@ -12,30 +12,28 @@ mingw64-x86_64-gcc cross compiler, and installs into the
 /usr/x86_64-w64-mingw32/sys-root/mingw/{lib,include} directories."
 HOMEPAGE="http://www.gnupg.org/related_software/libraries.en.html"
 #SRC_URI="ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-${VERSION}.tar.bz2"
-md5sum=67edcc4715a8c239eac70a931e49660d
+sha512sum=4aa981f4b270e480324dc3b021781c0b01a0f1fc5950654ccd379d47acbb791a2df612f212191ecac50c39a7ba83cc62de9a9271c663aad6d49721de14ecced5
 SRC_URI="
-	http://pkgs.fedoraproject.org/repo/pkgs/libgcrypt/libgcrypt-${VERSION}-hobbled.tar.xz/${md5sum}/libgcrypt-${VERSION}-hobbled.tar.xz
+	http://pkgs.fedoraproject.org/repo/pkgs/libgcrypt/libgcrypt-${VERSION}-hobbled.tar.xz/sha512/${sha512sum}/libgcrypt-${VERSION}-hobbled.tar.xz
 	http://pkgs.fedoraproject.org/cgit/libgcrypt.git/plain/ecc-curves.c
+	http://pkgs.fedoraproject.org/cgit/libgcrypt.git/plain/ecc-gost.c
 	http://pkgs.fedoraproject.org/cgit/libgcrypt.git/plain/curves.c
 	http://pkgs.fedoraproject.org/cgit/libgcrypt.git/plain/t-mpi-point.c
 "
 SRC_DIR="libgcrypt-${VERSION}"
 PATCH_URI="
-	http://pkgs.fedoraproject.org/cgit/libgcrypt.git/plain/libgcrypt-1.6.5-leak.patch
-	http://pkgs.fedoraproject.org/cgit/libgcrypt.git/plain/libgcrypt-1.6.1-ecc-test-fix.patch
-	http://pkgs.fedoraproject.org/cgit/libgcrypt.git/plain/libgcrypt-1.6.3-aliasing.patch
+	http://pkgs.fedoraproject.org/cgit/libgcrypt.git/plain/libgcrypt-1.7.3-ecc-test-fix.patch
+	http://pkgs.fedoraproject.org/cgit/libgcrypt.git/plain/libgcrypt-1.7.3-aliasing.patch
 	http://pkgs.fedoraproject.org/cgit/mingw-libgcrypt.git/plain/libgcrypt-use-correct-def-file.patch
-	http://pkgs.fedoraproject.org/cgit/mingw-libgcrypt.git/plain/libgcrypt-use-correct-asm-code-for-win64.patch
-	1.6.6-win64-asm.patch
 "
 CYGPORT_USE_UNSTABLE_API=1
 src_unpack_hook() {
-	mv ecc-curves.c cipher/
+	mv ecc-curves.c ecc-gost.c cipher/
 	mv curves.c t-mpi-point.c tests/
 }
 
 DIFF_EXCLUDES="gcrypt.h"
 
 # setup requires static library
-CYGCONF_ARGS="--enable-static --disable-padlock-support ac_cv_sys_symbol_underscore=no"
+CYGCONF_ARGS="--enable-static --disable-asm"
 MAKEOPTS+=" bin_PROGRAMS= man_MANS= INFO_DEPS= "
