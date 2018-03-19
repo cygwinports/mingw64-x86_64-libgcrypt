@@ -2,7 +2,7 @@ CROSS_HOST="x86_64-w64-mingw32"
 inherit cross
 
 NAME="mingw64-x86_64-libgcrypt"
-VERSION=1.7.8
+VERSION=1.8.2
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="libgcrypt for Win64 toolchain"
@@ -12,18 +12,17 @@ mingw64-x86_64-gcc cross compiler, and installs into the
 /usr/x86_64-w64-mingw32/sys-root/mingw/{lib,include} directories."
 HOMEPAGE="http://www.gnupg.org/related_software/libraries.en.html"
 #SRC_URI="ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-${VERSION}.tar.bz2"
-sha512sum=19c13ebdbd24657a9694702f91f045f5fb91b7b68eb4361a6abbb0c1bb90403cf8657d650cf97f9fd61d7ed571682181b34d35777d634187bfd0a78b2857efe1
+sha512sum=a44a5fc1205e9d9eaaabd07be1a079a5a1d59c729cd13310e9bbd30da0c24ad98c40e23ea8a2db22c43aca818745e95004e51f6eb1d63ae4e259506aeecfb692
 SRC_URI="
-	http://pkgs.fedoraproject.org/repo/pkgs/libgcrypt/libgcrypt-${VERSION}-hobbled.tar.xz/sha512/${sha512sum}/libgcrypt-${VERSION}-hobbled.tar.xz
-	http://pkgs.fedoraproject.org/cgit/libgcrypt.git/plain/ecc-curves.c
-	http://pkgs.fedoraproject.org/cgit/libgcrypt.git/plain/curves.c
-	http://pkgs.fedoraproject.org/cgit/libgcrypt.git/plain/t-mpi-point.c
+	http://src.fedoraproject.org/repo/pkgs/libgcrypt/libgcrypt-${VERSION}-hobbled.tar.xz/sha512/${sha512sum}/libgcrypt-${VERSION}-hobbled.tar.xz
+	http://src.fedoraproject.org/cgit/rpms/libgcrypt.git/plain/ecc-curves.c
+	http://src.fedoraproject.org/cgit/rpms/libgcrypt.git/plain/curves.c
+	http://src.fedoraproject.org/cgit/rpms/libgcrypt.git/plain/t-mpi-point.c
 "
 SRC_DIR="libgcrypt-${VERSION}"
 PATCH_URI="
-	http://pkgs.fedoraproject.org/cgit/libgcrypt.git/plain/libgcrypt-1.7.3-ecc-test-fix.patch
-	http://pkgs.fedoraproject.org/cgit/libgcrypt.git/plain/libgcrypt-1.7.3-aliasing.patch
-	http://pkgs.fedoraproject.org/cgit/mingw-libgcrypt.git/plain/libgcrypt-use-correct-def-file.patch
+	http://src.fedoraproject.org/cgit/rpms/libgcrypt.git/plain/libgcrypt-1.7.3-ecc-test-fix.patch
+	http://src.fedoraproject.org/cgit/rpms/mingw-libgcrypt.git/plain/libgcrypt-use-correct-def-file.patch
 "
 CYGPORT_USE_UNSTABLE_API=1
 src_unpack_hook() {
